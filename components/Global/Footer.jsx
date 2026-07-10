@@ -46,26 +46,26 @@ export default function Footer() {
   };
 
   const insuranceLinks = [
-    { label: "Health Insurance", href: "/#insurance-wizard" },
-    { label: "Term Life Insurance", href: "/#insurance-wizard" },
-    { label: "Car Insurance", href: "/#insurance-wizard" },
-    { label: "Bike Insurance", href: "/#insurance-wizard" },
-    { label: "Business Insurance", href: "/#insurance-wizard" },
+    { label: "Health Insurance", href: "/insurance/health" },
+    { label: "Term Life Insurance", href: "/insurance/life" },
+    { label: "Car Insurance", href: "/insurance/car" },
+    { label: "Bike Insurance", href: "/insurance/bike" },
+    { label: "Business Insurance", href: "/insurance/business" },
   ];
 
   const loanInvestLinks = [
-    { label: "Personal Loan", href: "/#loan-wizard" },
-    { label: "Home Loan", href: "/#loan-wizard" },
-    { label: "Business Loan", href: "/#loan-wizard" },
-    { label: "Mutual Funds Direct SIP", href: "/#mutual-funds-section" },
+    { label: "Personal Loan", href: "/loans/personal" },
+    { label: "Home Loan", href: "/loans/home" },
+    { label: "Business Loan", href: "/loans/business" },
+    { label: "Mutual Funds Direct SIP", href: "/investments/mutual-funds" },
     { label: "SIP / EMI Calculator", href: "/#calculator-section" },
   ];
 
   const advisoryLinks = [
-    { label: "ITR Filing & Planning", href: "/#tax-filing-section" },
-    { label: "Accounting & GST Registration", href: "/#tax-filing-section" },
-    { label: "Company Incorporation", href: "/#tax-filing-section" },
-    { label: "Wealth Management", href: "/#calculator-section" },
+    { label: "ITR Filing & Planning", href: "/tax/itr" },
+    { label: "Accounting & GST Registration", href: "/tax/accounting" },
+    { label: "Company Incorporation", href: "/tax/compliance" },
+    { label: "Wealth Management", href: "/investments/retirement" },
   ];
 
   const socialLinks = [
