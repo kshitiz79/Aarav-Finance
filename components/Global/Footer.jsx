@@ -137,9 +137,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Tax & Advisory */}
+          {/* Column 4: Finance Consultancy */}
           <div className="lg:col-span-2">
-            <h3 className="text-slate-800 text-base font-bold mb-5 tracking-wide">Tax & Advisory</h3>
+            <h3 className="text-slate-800 text-base font-bold mb-5 tracking-wide">Finance Consultancy</h3>
             <ul className="flex flex-col gap-3 list-none p-0 m-0 text-sm">
               {advisoryLinks.map((link, idx) => (
                 <li key={idx}>

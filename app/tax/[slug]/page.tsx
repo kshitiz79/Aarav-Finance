@@ -3,12 +3,18 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
+interface PricingGroup {
+  groupName: string;
+  tiers: { bracket: string; fee: string; note?: string }[];
+}
+
 interface ProductDetails {
   title: string;
   desc: string;
   tagline: string;
   metricLabel: string;
-  pricingTiers: { bracket: string; fee: string; note: string }[];
+  pricingTiers?: { bracket: string; fee: string; note: string }[];
+  groupedPricing?: PricingGroup[];
   features: string[];
   faqs: { q: string; a: string }[];
 }
@@ -20,9 +26,9 @@ const taxData: Record<string, ProductDetails> = {
     tagline: "Expert-assisted ITR filing starting from just ₹999 with maximum tax saving optimization",
     metricLabel: "Select primary income source category",
     pricingTiers: [
-      { bracket: "Salaried Individual (Form 16)", fee: "₹999", note: "Standard single Form 16 filing, House Property u/s 24 details" },
-      { bracket: "Professional / Freelancer (44ADA)", fee: "₹2,499", note: "Presumptive taxation scheme for developers, consultants" },
-      { bracket: "Business / Capital Gains (44AD / Stocks)", fee: "₹3,999", note: "Includes stock capital gains statement audits & business sheets" }
+      { bracket: "Salaried Individual (Form 16)", fee: "Starts from ₹999", note: "Standard single Form 16 filing with professional CA review" },
+      { bracket: "Non-Salaried Individuals", fee: "Starts from ₹1,999", note: "Professional/Freelancer, Capital Gains, House Properties" },
+      { bracket: "Business ITR", fee: "Get Quote", note: "Proprietorship, Partnership, LLP, or Pvt Ltd tax returns" }
     ],
     features: [
       "Assigned dedicated personal Chartered Accountant (CA)",
@@ -41,9 +47,9 @@ const taxData: Record<string, ProductDetails> = {
     tagline: "Ensure absolute accounting sheet accuracy and stay business audit ready",
     metricLabel: "Select monthly business transaction volume",
     pricingTiers: [
-      { bracket: "Micro Startup (< 100 tx/month)", fee: "₹4,999/mo", note: "Monthly ledgers, bank reconciliation, standard P&L sheets" },
-      { bracket: "Growing Business (100 - 500 tx/month)", fee: "₹9,999/mo", note: "Includes accounts payable/receivable monitoring and payroll" },
-      { bracket: "Enterprise Scale (> 500 tx/month)", fee: "Custom Quote", note: "Dedicated full-time virtual accountant & direct audit coordination" }
+      { bracket: "Micro Startup (<100 transactions/month)", fee: "₹2,499/month", note: "Monthly ledgers, bank reconciliation, standard P&L sheets" },
+      { bracket: "Growing Business (100–500 transactions/month)", fee: "₹6,999/month", note: "Includes accounts payable/receivable monitoring and payroll" },
+      { bracket: "Enterprise Scale (>500 transactions/month)", fee: "Get Quote", note: "Dedicated full-time virtual accountant & direct audit coordination" }
     ],
     features: [
       "Maintain active, updated ledgers compliant with Companies Act",
@@ -62,9 +68,9 @@ const taxData: Record<string, ProductDetails> = {
     tagline: "Avoid late penalties and match Input Tax Credit (ITC) with 100% accuracy",
     metricLabel: "Select GST frequency scheme preference",
     pricingTiers: [
-      { bracket: "GST Registration (New Setup)", fee: "₹1,499", note: "Includes GSTIN certificate generation & advisory on HSN codes" },
-      { bracket: "Monthly Return Filings (GSTR-1 & 3B)", fee: "₹1,999/mo", note: "Includes GSTR-2B purchase credit reconciliation checks" },
-      { bracket: "Composition Scheme Returns (QRMP)", fee: "₹2,999/quarter", note: "Best for low turnover retailers u/s QRMP flat schemes" }
+      { bracket: "GST Registration (New Setup)", fee: "Starts from ₹1,999", note: "Includes GSTIN certificate generation & advisory on HSN codes" },
+      { bracket: "Monthly Return Filing (GSTR-1 & GSTR-3B)", fee: "Starts from ₹999/month", note: "Includes GSTR-2B purchase credit reconciliation checks" },
+      { bracket: "Composition Scheme Returns (QRMP)", fee: "Starts from ₹1,999/quarter", note: "Best for low turnover retailers under QRMP flat schemes" }
     ],
     features: [
       "Reconciliation of purchase invoices with GSTR-2B ensuring full ITC",
@@ -79,13 +85,38 @@ const taxData: Record<string, ProductDetails> = {
   },
   compliance: {
     title: "Corporate & Startup Compliance",
-    desc: "Handle company incorporation, ROC filings, director director KYC registration, statutory registers, and government audits seamlessly.",
+    desc: "Handle company incorporation, ROC filings, director KYC registration, statutory registers, and government audits seamlessly.",
     tagline: "Stay fully compliant with Ministry of Corporate Affairs (MCA) mandates",
     metricLabel: "Choose incorporation or ROC compliance type",
-    pricingTiers: [
-      { bracket: "Private Limited Incorporation", fee: "₹6,999", note: "Includes name approval, DSC, DIN, MoA/AoA drafts & PAN/TAN" },
-      { bracket: "Annual ROC filings package", fee: "₹9,999", note: "Includes drafting ADT-1, AOC-4, MGT-7 and board resolutions" },
-      { bracket: "LLP Annual Compliances", fee: "₹5,999", note: "Filing Form 8 and Form 11 returns annually for partner firms" }
+    groupedPricing: [
+      {
+        groupName: "Registration",
+        tiers: [
+          { bracket: "Udyam Registration", fee: "Starts from ₹999", note: "MSME registration for business benefits & subsidies" },
+          { bracket: "FSSAI Registration", fee: "Starts from ₹1,499", note: "Food license registration for food business operators" },
+          { bracket: "EPF Registration", fee: "Starts from ₹4,999", note: "Employee Provident Fund registration for employers" },
+          { bracket: "ESI Registration", fee: "Starts from ₹4,999", note: "Employee State Insurance registration for employers" },
+          { bracket: "12A & 80G Registration", fee: "Starts from ₹5,999", note: "Income tax exemption registrations for NGOs & Trusts" }
+        ]
+      },
+      {
+        groupName: "New Setup",
+        tiers: [
+          { bracket: "Partnership Firm Registration", fee: "Starts from ₹1,999", note: "Partnership deed drafting and firm registration setup" },
+          { bracket: "OPC Registration", fee: "Starts from ₹2,499", note: "One Person Company registration with legal setup" },
+          { bracket: "LLP Registration", fee: "Starts from ₹2,499", note: "Limited Liability Partnership registration & deed draft" },
+          { bracket: "Private Limited Company Registration", fee: "Starts from ₹2,999", note: "Pvt Ltd company registration, DIN, DSC & name approval" },
+          { bracket: "Trust Registration", fee: "Starts from ₹2,999", note: "Trust deed drafting & official trust registration" }
+        ]
+      },
+      {
+        groupName: "Other Services",
+        tiers: [
+          { bracket: "Powerful Logos for Your Brand", fee: "Starts from ₹1,999", note: "Brand identity, creative custom logo design options" },
+          { bracket: "Copyright Registration", fee: "Starts from ₹4,999", note: "Legal protection registration for creative and original works" },
+          { bracket: "Trademark Application & Filing", fee: "Starts from ₹1,999", note: "Brand name, logo, or slogan trademark application filing" }
+        ]
+      }
     ],
     features: [
       "Company name approval checks and DSC/DIN generation",
@@ -94,8 +125,8 @@ const taxData: Record<string, ProductDetails> = {
       "Advisory support on FEMA, FDI compliance, and ESOP schemes"
     ],
     faqs: [
-      { q: "What is AOC-4 and MGT-7?", a: "AOC-4 is the MCA form used to file financial statements annually. MGT-7 is the annual return form covering shareholding, directors, and capital structure details." },
-      { q: "What are DSC and DIN?", a: "DSC (Digital Signature Certificate) is used to digitally sign electronic forms. DIN (Director Identification Number) is a unique number issued to corporate directors." }
+      { q: "What is Udyam Registration?", a: "It is a government registration for micro, small, and medium enterprises (MSMEs). It allows businesses to claim benefits under MSME schemes, lower loan interest rates, and priority sector lending." },
+      { q: "Why register a Trademark?", a: "A trademark protects your brand identity, logo, or slogan from being copied or used by competitors, granting you exclusive nationwide ownership rights." }
     ]
   }
 };
@@ -104,7 +135,7 @@ export default function TaxPage({ params }: { params: Promise<{ slug: string }> 
   const { slug } = React.use(params);
   const data = taxData[slug];
 
-  const [selectedTier, setSelectedTier] = useState<number | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<{ name: string; fee: string } | null>(null);
   const [callbackName, setCallbackName] = useState("");
   const [callbackPhone, setCallbackPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -127,7 +158,7 @@ export default function TaxPage({ params }: { params: Promise<{ slug: string }> 
       setSubmitted(true);
       setTimeout(() => {
         setSubmitted(false);
-        setSelectedTier(null);
+        setSelectedPlan(null);
         setCallbackName("");
         setCallbackPhone("");
       }, 4000);
@@ -141,7 +172,7 @@ export default function TaxPage({ params }: { params: Promise<{ slug: string }> 
         <div className="text-xs text-slate-400 mb-6 flex gap-2 font-semibold">
           <Link href="/" className="hover:text-brand-blue">Home</Link>
           <span>/</span>
-          <span className="text-slate-600">Tax & Compliance</span>
+          <span className="text-slate-600">Finance Consultancy</span>
           <span>/</span>
           <span className="text-brand-blue font-bold capitalize">{slug}</span>
         </div>
@@ -150,7 +181,7 @@ export default function TaxPage({ params }: { params: Promise<{ slug: string }> 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
           <div className="lg:col-span-7">
             <span className="text-brand-teal text-xs font-extrabold uppercase tracking-widest bg-brand-teal/10 px-3 py-1 rounded-full">
-              Tax & Compliance Support
+              Finance Consultancy
             </span>
             <h1 className="text-3xl sm:text-5xl font-black text-slate-850 mt-4 leading-tight">
               {data.title}
@@ -179,7 +210,7 @@ export default function TaxPage({ params }: { params: Promise<{ slug: string }> 
               Select Package & Plan
             </h3>
 
-            {selectedTier !== null ? (
+            {selectedPlan !== null ? (
               /* Callback or detailed checkout form */
               <div className="flex flex-col gap-4">
                 {submitted ? (
@@ -188,12 +219,12 @@ export default function TaxPage({ params }: { params: Promise<{ slug: string }> 
                       ✓
                     </span>
                     <h4 className="font-bold text-slate-800 text-sm">Consultation Scheduled!</h4>
-                    <p className="text-[10px] text-slate-450 mt-1">Our tax expert Chartered Accountant (CA) will call you within 15 minutes.</p>
+                    <p className="text-[10px] text-slate-450 mt-1">Our finance expert will call you within 15 minutes.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleApplySubmit} className="flex flex-col gap-4">
                     <span className="text-[11px] text-brand-teal bg-brand-teal/10 p-3 rounded-lg font-bold">
-                      Selected: {data.pricingTiers[selectedTier].bracket} ({data.pricingTiers[selectedTier].fee})
+                      Selected: {selectedPlan.name} ({selectedPlan.fee})
                     </span>
 
                     <div>
@@ -223,11 +254,11 @@ export default function TaxPage({ params }: { params: Promise<{ slug: string }> 
                       type="submit"
                       className="bg-brand-blue hover:bg-brand-blue-hover text-white text-xs font-bold py-2.5 rounded-xl transition-all cursor-pointer text-center mt-2 shadow-md shadow-brand-blue/10"
                     >
-                      Connect with Tax Expert &rarr;
+                      Connect with Finance Expert &rarr;
                     </button>
                     <button
                       type="button"
-                      onClick={() => setSelectedTier(null)}
+                      onClick={() => setSelectedPlan(null)}
                       className="text-[10px] text-slate-400 hover:text-slate-600 font-semibold text-center"
                     >
                       &larr; Return to plans
@@ -242,10 +273,10 @@ export default function TaxPage({ params }: { params: Promise<{ slug: string }> 
                   {data.metricLabel}
                 </span>
 
-                {data.pricingTiers.map((tier, tIdx) => (
+                {data.pricingTiers && data.pricingTiers.map((tier, tIdx) => (
                   <button
                     key={tIdx}
-                    onClick={() => setSelectedTier(tIdx)}
+                    onClick={() => setSelectedPlan({ name: tier.bracket, fee: tier.fee })}
                     className="w-full text-left bg-white hover:bg-slate-50 border border-slate-100 p-4 rounded-xl flex items-center justify-between shadow-xs transition-all group"
                   >
                     <div>
@@ -254,11 +285,46 @@ export default function TaxPage({ params }: { params: Promise<{ slug: string }> 
                       </h4>
                       <p className="text-[9px] text-slate-400 mt-1">{tier.note}</p>
                     </div>
-                    <span className="text-brand-teal font-extrabold text-sm sm:text-base ml-2 flex-shrink-0">
+                    <span className="text-brand-teal font-extrabold text-xs sm:text-sm ml-2 flex-shrink-0">
                       {tier.fee}
                     </span>
                   </button>
                 ))}
+
+                {data.groupedPricing && (
+                  <div className="flex flex-col gap-5 max-h-[420px] overflow-y-auto pr-1">
+                    {data.groupedPricing.map((group, gIdx) => (
+                      <div key={gIdx} className="flex flex-col gap-2">
+                        <h4 className="text-[10px] text-brand-blue font-extrabold uppercase tracking-widest bg-brand-blue/5 px-2.5 py-1 rounded w-fit">
+                          {group.groupName}
+                        </h4>
+                        <div className="flex flex-col gap-2">
+                          {group.tiers.map((tier, tIdx) => (
+                            <button
+                              key={tIdx}
+                              onClick={() => setSelectedPlan({ name: tier.bracket, fee: tier.fee })}
+                              className="w-full text-left bg-white hover:bg-slate-50 border border-slate-100 p-3 rounded-xl flex items-center justify-between shadow-xs transition-all group"
+                            >
+                              <div className="pr-2">
+                                <h5 className="font-bold text-xs text-slate-700 group-hover:text-brand-blue transition-colors">
+                                  {tier.bracket}
+                                </h5>
+                                {tier.note && <p className="text-[9px] text-slate-400 mt-0.5">{tier.note}</p>}
+                              </div>
+                              <span className="text-brand-teal font-extrabold text-[11px] sm:text-xs ml-2 flex-shrink-0">
+                                {tier.fee}
+                              </span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <p className="text-[9px] text-slate-400 mt-3 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                  * Note: The prices mentioned above represent our professional consultation and service fees only. Government fees, statutory charges, taxes, and other applicable filing or registration costs, if any, will be payable separately by the customer as per actual requirements.
+                </p>
               </div>
             )}
           </div>
@@ -287,6 +353,20 @@ export default function TaxPage({ params }: { params: Promise<{ slug: string }> 
               </div>
             ))}
           </div>
+        </div>
+
+        {/* About Finance Consultancy */}
+        <div className="bg-gradient-to-br from-amber-50/40 to-slate-50 border border-slate-100 p-8 sm:p-10 rounded-[32px] shadow-sm mt-12 mb-16">
+          <h3 className="font-extrabold text-slate-800 text-lg mb-4">Finance Consultancy</h3>
+          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+            Our team of experienced Chartered Accountants (CAs) and finance professionals is committed to helping individuals, startups, and businesses achieve sustainable growth through expert financial guidance and compliance support.
+          </p>
+          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+            From Income Tax Filing and Accounting to GST, Bookkeeping, and Business Compliance, we provide reliable, accurate, and timely services tailored to your business needs. Our objective is to simplify financial management so that you can focus on growing your business with confidence.
+          </p>
+          <p className="text-slate-750 text-xs sm:text-sm font-bold leading-relaxed">
+            Partner with our experts for professional advice, seamless compliance, and best-in-class financial services to support your business growth journey.
+          </p>
         </div>
 
       </div>

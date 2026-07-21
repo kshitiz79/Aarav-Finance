@@ -21,18 +21,18 @@ const loanData: Record<string, ProductDetails> = {
   personal: {
     title: "Personal Loan Offers",
     desc: "Unsecured cash loans with low interest rates, instant approvals, and zero collateral required.",
-    tagline: "Get quick approval personal loans from ₹50,000 up to ₹25 Lakhs",
+    tagline: "Personal Loan starting from @ 9.99%*",
     defaultPrincipal: 500000,
     minPrincipal: 50000,
     maxPrincipal: 2500000,
     principalStep: 50000,
-    defaultRate: 10.99,
+    defaultRate: 9.99,
     defaultYears: 5,
     features: [
       "No collateral or security needed",
       "Instant paperless verification in 10 minutes",
       "Flexible tenure options from 1 to 5 years",
-      "Interest rates starting from 10.49% p.a."
+      "Personal Loan starting from @ 9.99%*"
     ],
     faqs: [
       { q: "What is the minimum salary eligibility for a personal loan?", a: "Most partner banks require a minimum net monthly salary of ₹15,000 to ₹25,000, depending on the employer category and location." },
@@ -40,20 +40,20 @@ const loanData: Record<string, ProductDetails> = {
     ]
   },
   home: {
-    title: "Home Loan Solutions",
+    title: "Home Loan Offers",
     desc: "Achieve homeownership with customized home finance solutions, lowest interest rates, and balance transfer options.",
-    tagline: "Secure home loans at competitive rates starting from 8.40% p.a.",
+    tagline: "Home Loan starting from @ 7.25%*",
     defaultPrincipal: 4000000,
     minPrincipal: 500000,
     maxPrincipal: 100000000,
     principalStep: 100000,
-    defaultRate: 8.5,
+    defaultRate: 7.25,
     defaultYears: 20,
     features: [
       "Tenure up to 30 years for lower monthly EMIs",
       "Hassle-free loan balance transfer from other banks",
       "Pradhan Mantri Awas Yojana (PMAY) subsidy guidance",
-      "No foreclosure charges on floating interest rates"
+      "Home Loan starting from @ 7.25%*"
     ],
     faqs: [
       { q: "What documents are required for home loans?", a: "Standard requirements include: Identity proof, Address proof, Income proof (Form 16/3 months salary slips for salaried, or 2 years ITR filings for self-employed), and Property documents." },
@@ -61,41 +61,41 @@ const loanData: Record<string, ProductDetails> = {
     ]
   },
   business: {
-    title: "Business Loan Solutions",
+    title: "Business Loan Offers",
     desc: "Fund your business growth, manage working capital requirements, or buy machinery with collateral-free SME business loans.",
-    tagline: "Collateral-free commercial finance up to ₹50 Lakhs with minimum paperwork",
+    tagline: "Business Loan starting from @ 10.50%*",
     defaultPrincipal: 1500000,
     minPrincipal: 100000,
     maxPrincipal: 5000000,
     principalStep: 50000,
-    defaultRate: 14.5,
+    defaultRate: 10.50,
     defaultYears: 3,
     features: [
       "No security or asset mortgage required",
       "Quick disbursal within 48 to 72 hours",
       "Structured repayments tailored to cashflow seasonal cycles",
-      "Available for startups, retailers, and manufacturers"
+      "Business Loan starting from @ 10.50%*"
     ],
     faqs: [
       { q: "What is the minimum business vintage required?", a: "Lenders usually require a minimum business running vintage of 2 years with a profitable operational track record." },
-      { q: "What is the interest rate for SME business loans?", a: "Interest rates range between 13% and 19% p.a., depending on the business category, turnover, and credit risk parameters." }
+      { q: "What is the interest rate for SME business loans?", a: "The starting interest rate is @ 10.50%*, subject to credit profile, eligibility, and the lending institution's credit policy." }
     ]
   },
   property: {
-    title: "Loan Against Property (LAP)",
+    title: "Loan Against Property (LAP) Offers",
     desc: "Unlock high-value liquidity by mortgaging your residential, commercial, or industrial properties.",
-    tagline: "Secure high-limit loans up to 70% of property market value u/s low rates",
+    tagline: "LAP starting from @ 9.50%*",
     defaultPrincipal: 5000000,
     minPrincipal: 1000000,
     maxPrincipal: 150000000,
     principalStep: 200000,
-    defaultRate: 9.5,
+    defaultRate: 9.50,
     defaultYears: 15,
     features: [
       "Lower interest rates compared to personal loans",
       "Long repayment tenure up to 15 years",
       "Property remains in your complete active possession",
-      "Can be used for business growth, child education, or debt consolidation"
+      "LAP starting from @ 9.50%*"
     ],
     faqs: [
       { q: "Can co-owned property be used for LAP?", a: "Yes, you can apply using a co-owned property, provided all co-owners of the property join as co-applicants for the loan." },
@@ -160,9 +160,9 @@ export default function LoansPage({ params }: { params: Promise<{ slug: string }
   };
 
   const simulatedOffers = [
-    { lender: "Lender Alpha (Top Private)", rate: `${(rate - 0.2).toFixed(2)}%`, processing: "0.5% fee", rating: "4.9/5" },
-    { lender: "Lender Beta (Public Trusted)", rate: `${rate.toFixed(2)}%`, processing: "Flat ₹2,500 fee", rating: "4.8/5" },
-    { lender: "Lender Gamma (MNC Bank)", rate: `${(rate + 0.15).toFixed(2)}%`, processing: "Zero fee promo", rating: "4.7/5" }
+    { lender: "Lender Alpha (Top Private)", rate: `@ ${rate.toFixed(2)}%*`, processing: "0.5% fee", rating: "4.9/5" },
+    { lender: "Lender Beta (Public Trusted)", rate: `@ ${rate.toFixed(2)}%*`, processing: "Flat ₹2,500 fee", rating: "4.8/5" },
+    { lender: "Lender Gamma (MNC Bank)", rate: `@ ${rate.toFixed(2)}%*`, processing: "Zero fee promo", rating: "4.7/5" }
   ];
 
   return (
@@ -299,18 +299,15 @@ export default function LoansPage({ params }: { params: Promise<{ slug: string }
 
                 <div>
                   <div className="flex justify-between items-center text-[11px] font-bold mb-2">
-                    <span className="text-slate-400 uppercase tracking-wider">Interest Rate</span>
-                    <span className="text-brand-blue text-sm font-extrabold">{rate} %</span>
+                    <span className="text-slate-400 uppercase tracking-wider">Interest Rate (p.a.)</span>
+                    <span className="text-brand-blue text-sm font-extrabold">{rate} %*</span>
                   </div>
-                  <input
-                    type="range"
-                    min="5"
-                    max="22"
-                    step="0.1"
-                    value={rate}
-                    onChange={(e) => setRate(Number(e.target.value))}
-                    className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-blue"
-                  />
+                  <div className="w-full h-1.5 bg-slate-200/50 rounded-lg relative overflow-hidden">
+                    <div className="bg-brand-blue h-full" style={{ width: `${(rate / 22) * 100}%` }} />
+                  </div>
+                  <div className="text-[10px] text-slate-450 mt-1 italic">
+                    Fixed starting rate of {rate}%* applied
+                  </div>
                 </div>
 
                 <div>
@@ -379,6 +376,14 @@ export default function LoansPage({ params }: { params: Promise<{ slug: string }
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Disclaimer */}
+        <div className="mt-12 text-[11px] text-slate-450 leading-relaxed border-t border-slate-100 pt-6">
+          <p className="font-bold mb-1">Disclaimer:</p>
+          <p>
+            The interest rates displayed on this website are indicative and starting rates only. The final loan amount, applicable interest rate, tenure, and terms of sanction are subject to the respective bank&apos;s or financial institution&apos;s credit policy, eligibility criteria, documentation, verification process, and final approval. Loan approval and actual interest rates may vary based on the applicant&apos;s profile and the lending institution&apos;s assessment.
+          </p>
         </div>
 
       </div>

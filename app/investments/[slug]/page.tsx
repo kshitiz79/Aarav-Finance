@@ -159,11 +159,37 @@ export default function InvestmentsPage({ params }: { params: Promise<{ slug: st
     }
   };
 
-  const simulatedFunds = [
-    { name: "Finsocap Diversified Equity Plan", returns: `${(rate + 1.8).toFixed(1)}%`, rating: "5/5 Stars", expenseRatio: "0.22% (Direct)" },
-    { name: "Finsocap Nifty Index Tracker", returns: `${rate.toFixed(1)}%`, rating: "4.8/5 Stars", expenseRatio: "0.08% (Direct)" },
-    { name: "Finsocap Conservative Balanced Fund", returns: `${(rate - 1.5).toFixed(1)}%`, rating: "4.7/5 Stars", expenseRatio: "0.18% (Direct)" }
-  ];
+  const getFundsForSlug = (slug: string) => {
+    switch (slug) {
+      case "mutual-funds":
+        return [
+          { name: "Parag Parikh Flexi Cap Fund - Direct Growth", returns: "Expected Return: 14.52%", rating: "5/5 Stars", expenseRatio: "0.55% (Direct)" },
+          { name: "Nippon India Small Cap Fund - Direct Growth", returns: "Expected Return: 18.25%", rating: "5/5 Stars", expenseRatio: "0.68% (Direct)" },
+          { name: "Quant Small Cap Fund (Direct Plan - Growth)", returns: "Expected Return: 21.35%", rating: "4.9/5 Stars", expenseRatio: "0.77% (Direct)" }
+        ];
+      case "sip":
+        return [
+          { name: "HDFC Flexi Cap Fund", returns: "Expected Return: 17.50%", rating: "5/5 Stars", expenseRatio: "0.80% (Direct)" },
+          { name: "ICICI Prudential Bluechip Fund", returns: "Expected Return: 15.15%", rating: "4.8/5 Stars", expenseRatio: "0.75% (Direct)" },
+          { name: "Motilal Oswal Midcap Fund", returns: "Expected Return: 20.05%", rating: "4.9/5 Stars", expenseRatio: "0.65% (Direct)" }
+        ];
+      case "elss":
+        return [
+          { name: "SBI ELSS Tax Saver Fund", returns: "Expected Return: 16.55%", rating: "4.8/5 Stars", expenseRatio: "0.78% (Direct)" },
+          { name: "HDFC ELSS Tax Saver Fund", returns: "Expected Return: 15.40%", rating: "4.7/5 Stars", expenseRatio: "0.82% (Direct)" },
+          { name: "Quant ELSS Tax Saver Fund", returns: "Expected Return: 16.50%", rating: "4.9/5 Stars", expenseRatio: "0.77% (Direct)" }
+        ];
+      case "retirement":
+        return [
+          { name: "ICICI Prudential Retirement Fund (Pure Equity)", returns: "3-Year CAGR: ~21.90%", rating: "4.9/5 Stars", expenseRatio: "0.85% (Direct)" },
+          { name: "Tata Retirement Savings Fund", returns: "3-Year CAGR: ~13.90%", rating: "4.7/5 Stars", expenseRatio: "0.90% (Direct)" },
+          { name: "Nippon India Retirement Fund", returns: "3-Year CAGR: ~13.40%", rating: "4.6/5 Stars", expenseRatio: "0.88% (Direct)" }
+        ];
+      default:
+        return [];
+    }
+  };
+  const simulatedFunds = getFundsForSlug(slug);
 
   return (
     <div className="bg-white text-slate-800 font-sans min-h-screen py-10">
@@ -232,7 +258,7 @@ export default function InvestmentsPage({ params }: { params: Promise<{ slug: st
                         <div key={fIdx} className="bg-white border border-slate-100 p-3.5 rounded-xl flex justify-between items-center shadow-xs">
                           <div>
                             <h5 className="font-bold text-xs text-slate-700">{fund.name}</h5>
-                            <p className="text-[9px] text-slate-400 mt-0.5">{fund.expenseRatio} | Exp. return: {fund.returns}</p>
+                            <p className="text-[9px] text-slate-405 mt-0.5">{fund.expenseRatio} | {fund.returns}</p>
                           </div>
                           <span className="text-brand-blue font-bold text-[10px] bg-brand-blue/5 px-2 py-0.5 rounded-full">{fund.rating}</span>
                         </div>
@@ -379,6 +405,23 @@ export default function InvestmentsPage({ params }: { params: Promise<{ slug: st
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Investment Disclaimer */}
+        <div className="mt-12 text-[11px] text-slate-450 leading-relaxed border-t border-slate-105 pt-6">
+          <p className="font-bold mb-2">Investment Disclaimer:</p>
+          <p className="mb-2">
+            The mutual fund schemes, SIPs, ELSS funds, and retirement portfolio options displayed on this website are for informational and illustrative purposes only and should not be considered investment advice or a recommendation to buy, sell, or hold any security or mutual fund scheme.
+          </p>
+          <p className="mb-2">
+            The expected returns and CAGR figures mentioned are based on historical performance and market estimates and are not guaranteed. Mutual fund investments are subject to market risks, including the possible loss of principal invested. Actual returns may vary depending on market conditions, investment tenure, fund performance, and other factors.
+          </p>
+          <p className="mb-2">
+            Investors are advised to carefully read all scheme-related documents and consult their financial advisor or investment professional before making any investment decision.
+          </p>
+          <p className="font-bold text-slate-500">
+            Mutual Fund investments are subject to market risks. Please read all scheme-related documents carefully before investing.
+          </p>
         </div>
 
       </div>

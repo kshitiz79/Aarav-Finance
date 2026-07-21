@@ -35,10 +35,10 @@ export default function CategoryGrid({ onRequestCallback }) {
         </svg>
       ),
       products: [
-        { name: "Personal Loan", desc: "Collateral-free instant cash up to ₹25 Lakhs", wizardLabel: "What is your required loan amount?", placeholder: "e.g. ₹5,000,000" },
-        { name: "Home Loan", desc: "Low interest rates starting from 8.4% p.a.", wizardLabel: "What is the budget of the property?", placeholder: "e.g. ₹8,000,000" },
-        { name: "Business Loan", desc: "SME working capital finance without security", wizardLabel: "What is your monthly business turnover?", placeholder: "e.g. ₹1,000,050" },
-        { name: "Loan Against Property", desc: "Unlock high-value liquidity against asset security", wizardLabel: "What is the estimated market value of property?", placeholder: "e.g. ₹15,000,000" },
+        { name: "Personal Loan", desc: "Collateral-free instant cash starting from @ 9.99%*", wizardLabel: "What is your required loan amount?", placeholder: "e.g. ₹5,000,000" },
+        { name: "Home Loan", desc: "Home finance solutions starting from @ 7.25%*", wizardLabel: "What is the budget of the property?", placeholder: "e.g. ₹8,000,000" },
+        { name: "Business Loan", desc: "SME working capital finance starting from @ 10.50%*", wizardLabel: "What is your monthly business turnover?", placeholder: "e.g. ₹1,000,050" },
+        { name: "Loan Against Property", desc: "Unlock asset-secured liquidity starting from @ 9.50%*", wizardLabel: "What is the estimated market value of property?", placeholder: "e.g. ₹15,000,000" },
       ]
     },
     {
@@ -57,7 +57,7 @@ export default function CategoryGrid({ onRequestCallback }) {
       ]
     },
     {
-      title: "Tax & Compliance Support",
+      title: "Finance Consultancy",
       color: "border-amber-100 bg-amber-50/30",
       iconBg: "bg-amber-500/10 text-amber-600",
       iconSvg: (

@@ -205,77 +205,36 @@ export default function InsurancePage({ params }: { params: Promise<{ slug: stri
             </div>
           </div>
 
-          {/* Side Aggregator Form Card */}
-          <div className="lg:col-span-5 bg-slate-50 border border-slate-150 p-6 sm:p-8 rounded-3xl shadow-md">
-            <h3 className="font-extrabold text-slate-850 text-base mb-4">
-              Get Free Comparison Quotes
+          {/* Side Info Card */}
+          <div className="lg:col-span-5 bg-gradient-to-br from-sky-50 to-indigo-50/30 border border-sky-100/70 p-6 sm:p-8 rounded-3xl shadow-sm">
+            <h3 className="font-extrabold text-slate-850 text-lg mb-4 flex items-center gap-2">
+              <svg className="w-5 h-5 text-sky-600 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              Finsocap Insurance Advantage
             </h3>
-
-            {showQuotes ? (
-              <div className="flex flex-col gap-3">
-                <span className="text-[11px] text-brand-teal bg-brand-teal/10 p-3 rounded-lg font-bold">
-                  ✓ Quotes aggregated based on: &ldquo;{inputVal}&rdquo;
-                </span>
-                {simulatedPartners.map((part, pIdx) => (
-                  <div key={pIdx} className="bg-white border border-slate-100 p-4 rounded-xl flex justify-between items-center shadow-sm">
-                    <div>
-                      <h4 className="font-bold text-slate-800 text-xs sm:text-sm">{part.name}</h4>
-                      <p className="text-[10px] text-slate-400 mt-1">{part.coverage} | {part.highlight}</p>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-brand-blue text-sm sm:text-base font-extrabold block">{part.premium}</span>
-                      <button
-                        onClick={() => {
-                          setUserName("Visitor");
-                          setUserPhone("9999999999");
-                          setSuccessCallback(true);
-                        }}
-                        className="bg-brand-teal text-white text-[10px] font-bold px-3 py-1.5 rounded-lg hover:bg-brand-teal-hover transition-colors mt-2 cursor-pointer"
-                      >
-                        Buy Now
-                      </button>
-                    </div>
-                  </div>
-                ))}
-                <button
-                  onClick={() => setShowQuotes(false)}
-                  className="text-xs text-slate-400 hover:text-slate-600 font-bold text-center mt-2"
-                >
-                  &larr; Recalculate parameters
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
-                <div>
-                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wide mb-1.5">
-                    {data.metricLabel}
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={inputVal}
-                    onChange={(e) => setInputVal(e.target.value)}
-                    placeholder={data.metricPlaceholder}
-                    className="w-full bg-white border border-slate-200 rounded-xl px-4.5 py-3 text-xs outline-none focus:border-brand-blue text-slate-800"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-brand-blue hover:bg-brand-blue-hover text-white py-3 rounded-xl font-bold text-xs mt-2 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md shadow-brand-blue/10"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <span className="w-4.5 h-4.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      <span>Aggregating partner terms...</span>
-                    </>
-                  ) : (
-                    <span>Compare Partner Rates &rarr;</span>
-                  )}
-                </button>
-              </form>
-            )}
+            
+            <p className="text-slate-650 text-xs sm:text-sm leading-relaxed mb-4">
+              Our team of experienced insurance professionals helps individuals and businesses choose the most suitable insurance plans based on their needs and financial goals.
+            </p>
+            
+            <div className="border-t border-sky-100/50 my-4" />
+            
+            <p className="text-slate-600 text-xs leading-relaxed mb-4">
+              Whether it is <strong>Health Insurance</strong>, <strong>Term Life Insurance</strong>, <strong>Motor (Car/Bike) Insurance</strong>, <strong>Travel Insurance</strong>, or <strong>Business Insurance</strong>, we provide expert guidance to help you select the right coverage at competitive prices.
+            </p>
+            
+            <p className="text-slate-600 text-xs leading-relaxed mb-4">
+              We also assist customers with policy servicing, renewals, and claim-related support to ensure a smooth and hassle-free experience.
+            </p>
+            
+            <div className="bg-white/80 border border-sky-100 p-4 rounded-2xl mt-6 shadow-sm">
+              <p className="text-slate-700 text-xs font-bold leading-relaxed text-center italic">
+                &ldquo;Choose the right protection with expert advice and reliable claim assistance at every step of your insurance journey&rdquo;
+              </p>
+            </div>
           </div>
+
         </div>
 
         {/* FAQs Section */}
