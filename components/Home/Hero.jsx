@@ -42,17 +42,23 @@ export default function Hero({ onRequestCallback }) {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/20 text-slate-800 py-20 lg:py-28 font-sans border-b border-slate-100">
+    <section className="relative overflow-hidden text-slate-800 py-20 lg:py-28 font-sans border-b border-slate-100" style={{ backgroundImage: "url('/headerimg.png')", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }}>
       {/* Decorative colored spots */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-brand-teal/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none" />
+
+
+
+    
+
+      `
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10 text-center flex flex-col items-center">
         <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-widest bg-brand-teal/10 text-brand-teal px-4 py-1.5 rounded-full mb-6">
           All-In-One Financial Supermarket
         </span>
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight max-w-3xl text-slate-850">
-          Compare & Save on <span className="text-brand-blue">Loans, Insurance</span> & Mutual Funds
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight max-w-3xl text-white bg-black/20 px-4 py-2 rounded-lg">
+          Compare & Save on <span className="text-white">Loans, Insurance</span> & Mutual Funds
         </h1>
         <p className="text-sm sm:text-lg text-slate-500 mt-6 max-w-2xl leading-relaxed">
           Finsocap provides finance and insurance services, offering complete financial solutions under one roof. Save up to 25% with our trusted guidance and fast CA-assisted compliance.
@@ -110,3 +116,7 @@ export default function Hero({ onRequestCallback }) {
     </section>
   );
 }
+
+
+
+

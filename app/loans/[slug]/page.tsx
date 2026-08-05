@@ -159,11 +159,6 @@ export default function LoansPage({ params }: { params: Promise<{ slug: string }
     }
   };
 
-  const simulatedOffers = [
-    { lender: "Lender Alpha (Top Private)", rate: `@ ${rate.toFixed(2)}%*`, processing: "0.5% fee", rating: "4.9/5" },
-    { lender: "Lender Beta (Public Trusted)", rate: `@ ${rate.toFixed(2)}%*`, processing: "Flat ₹2,500 fee", rating: "4.8/5" },
-    { lender: "Lender Gamma (MNC Bank)", rate: `@ ${rate.toFixed(2)}%*`, processing: "Zero fee promo", rating: "4.7/5" }
-  ];
 
   return (
     <div className="bg-white text-slate-800 font-sans min-h-screen py-10">
@@ -227,17 +222,7 @@ export default function LoansPage({ params }: { params: Promise<{ slug: string }
                       Compare Partner Offers on: ₹{principal.toLocaleString("en-IN")}
                     </span>
 
-                    <div className="flex flex-col gap-2 max-h-56 overflow-y-auto mb-2">
-                      {simulatedOffers.map((off, oIdx) => (
-                        <div key={oIdx} className="bg-white border border-slate-100 p-3.5 rounded-xl flex justify-between items-center shadow-xs">
-                          <div>
-                            <h5 className="font-bold text-xs text-slate-700">{off.lender}</h5>
-                            <p className="text-[10px] text-slate-450 mt-0.5">{off.processing}</p>
-                          </div>
-                          <span className="text-brand-teal font-extrabold text-xs sm:text-sm">{off.rate}</span>
-                        </div>
-                      ))}
-                    </div>
+           
 
                     <div>
                       <label className="block text-[9px] font-bold text-slate-450 uppercase mb-1">Your Name</label>
