@@ -4,7 +4,7 @@ We provide finance and insurance services, offering complete financial solutions
 
 
 
-Finsocap - compony name
+Finsocap - company name
 
 
 

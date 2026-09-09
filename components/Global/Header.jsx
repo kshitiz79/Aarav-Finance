@@ -70,10 +70,11 @@ export default function Header() {
         { title: "Income Tax Filing (ITR)", href: "/tax/itr", tag: "Expert Assisted" },
         { title: "Accounting & Bookkeeping", href: "/tax/accounting" },
         { title: "GST Registration & Filing", href: "/tax/gst" },
-        { title: "Corporate Compliance", href: "/tax/compliance" },
+        { title: "company Compliance", href: "/tax/compliance" },
       ],
     },
     { title: "EMI Calculator", href: "/#calculator-section" },
+    { title: "Contact Us", href: "/contact" },
   ];
 
   const handleMobileSubmenuToggle = (idx) => {
@@ -83,11 +84,10 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-[999] transition-all duration-300 font-sans ${
-          isSticky
-            ? "bg-white/95 backdrop-blur-md shadow-md py-3"
-            : "bg-white border-b border-slate-100 py-4"
-        }`}
+        className={`fixed top-0 left-0 w-full z-[999] transition-all duration-300 font-sans ${isSticky
+          ? "bg-white/95 backdrop-blur-md shadow-md py-3"
+          : "bg-white border-b border-slate-100 py-4"
+          }`}
       >
         <div className="container mx-auto px-4 max-w-7xl flex items-center justify-between">
           {/* Logo */}
@@ -124,8 +124,8 @@ export default function Header() {
 
                   {/* Dropdown menu */}
                   {item.children && (
-                    <div className="absolute left-1/2 -translate-x-1/2 top-[100%] pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50">
-                      <div className="bg-white shadow-xl rounded-xl border border-slate-100 p-3 grid gap-1">
+                    <div className="absolute  left-1/2 -translate-x-1/2 top-[100%] pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50">
+                      <div className="bg-white shadow-xl rounded-xl border border-slate-100 p-3 grid gap-1 ">
                         {item.children.map((subItem, subIdx) => (
                           <Link
                             key={subIdx}
@@ -149,13 +149,13 @@ export default function Header() {
           </nav>
 
           {/* Right Controls */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Consultation CTA */}
             <Link
               href="tel:+918095132132"
-              className="hidden md:flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-hover text-white px-4.5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-md shadow-brand-blue/15 hover:shadow-lg"
+              className="flex items-center gap-1.5 sm:gap-2 bg-[#3652a0] hover:bg-[#2b417d] text-white px-3 sm:px-4.5 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-md shadow-indigo-900/10 hover:shadow-lg"
             >
-              <PhoneCallIcon className="w-4 h-4" />
+              <PhoneCallIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span>Talk to Expert</span>
             </Link>
 
@@ -165,7 +165,7 @@ export default function Header() {
               className="lg:hidden p-2 rounded-lg hover:bg-slate-100 text-slate-700 transition-colors"
               aria-label="Toggle Menu"
             >
-              <div className="w-6 h-5 flex flex-col justify-between">
+              <div className="w-5 sm:w-6 h-4 sm:h-5 flex flex-col justify-between">
                 <span className={`w-full h-0.5 bg-current rounded-full transition-all duration-300 origin-left ${isMobileMenuOpen ? "rotate-45 translate-x-1" : ""}`} />
                 <span className={`w-full h-0.5 bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? "opacity-0" : ""}`} />
                 <span className={`w-full h-0.5 bg-current rounded-full transition-all duration-300 origin-left ${isMobileMenuOpen ? "-rotate-45 translate-x-1" : ""}`} />
@@ -179,7 +179,7 @@ export default function Header() {
       <div className={`fixed inset-0 z-[998] transition-all duration-300 ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
         {/* Backdrop overlay */}
         <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-        
+
         {/* Panel content */}
         <div className={`absolute top-0 right-0 w-80 max-w-[90%] h-full bg-white shadow-2xl flex flex-col p-6 overflow-y-auto transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
           <div className="flex items-center justify-between mb-8 border-b border-slate-100 pb-4">
@@ -247,7 +247,7 @@ export default function Header() {
           </div>
         </div>
       </div>
-      
+
       {/* Spacer to push page content down below header */}
       <div className="h-16 md:h-20" />
     </>

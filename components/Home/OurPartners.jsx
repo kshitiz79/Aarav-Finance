@@ -1,73 +1,86 @@
 "use client";
 
+import Image from "next/image";
+
 export default function OurPartners() {
-    const partners = [
-        { name: "HDFC Bank", category: "Banking Partner" },
-        { name: "Tata AIG", category: "Insurance Partner" },
-        { name: "LIC India", category: "Life Insurance Partner" },
-        { name: "SBI Mutual Fund", category: "Investment Partner" },
-        { name: "ICICI Lombard", category: "Insurance Partner" },
-        { name: "Nippon India", category: "Investment Partner" },
-        { name: "Axis Bank", category: "Banking Partner" },
-        { name: "Bajaj Allianz", category: "Insurance Partner" },
-        { name: "HDFC Ergo", category: "General Insurance" },
-        { name: "Kotak Mahindra", category: "Banking Partner" },
-        { name: "DSP Mutual Fund", category: "Investment Partner" },
-        { name: "Care Health", category: "Health Insurance" },
-    ];
+  const partners = [
+    { name: "HDFC Life", category: "Life Insurance Partner", src: "/home_slider/Partners-01.svg" },
+    { name: "Tata AIG", category: "Insurance Partner", src: "/home_slider/Partners-02.svg" },
+    { name: "LIC India", category: "Life Insurance Partner", src: "/home_slider/Partners-03.svg" },
+    { name: "SBI Mutual Fund", category: "Investment Partner", src: "/home_slider/Partners-04.svg" },
+    { name: "ICICI Lombard", category: "Insurance Partner", src: "/home_slider/Partners-05.svg" },
+    { name: "Nippon India", category: "Investment Partner", src: "/home_slider/Partners-06.svg" },
+    { name: "Axis Bank", category: "Banking Partner", src: "/home_slider/Partners-07.svg" },
+    { name: "Bajaj Allianz", category: "Insurance Partner", src: "/home_slider/Partners-08.svg" },
+    { name: "HDFC ERGO", category: "General Insurance", src: "/home_slider/Partners-09.svg" },
+    { name: "Kotak Mahindra", category: "Banking Partner", src: "/home_slider/Partners-10.svg" },
+    { name: "Care Health", category: "Health Insurance", src: "/home_slider/Partners-11.svg" },
+  ];
 
-    return (
-        <section className="py-16 bg-slate-50 border-y border-slate-100 overflow-hidden font-sans">
-            <div className=" mx-auto px-4 ">
-                <div className="text-center mb-10 max-w-2xl mx-auto">
-                    <span className="text-brand-teal text-xs font-extrabold uppercase tracking-widest bg-brand-teal/10 px-3 py-1 rounded-full">
-                        Finsocap Networks
-                    </span>
-                    <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-800 mt-4 tracking-tight">
-                        Our 50+ Trusted Financial Partners
-                    </h2>
-                    <p className="text-sm text-slate-500 mt-2">
-                        We partner with India&apos;s leading banks, insurance providers, and asset management houses to bring you the best rates and policies.
-                    </p>
+  return (
+    <section className="py-16 bg-slate-50/80 border-y border-slate-100 overflow-hidden font-sans">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center mb-12 max-w-2xl mx-auto">
+          <span className="text-[#0da687] text-xs font-black uppercase tracking-widest bg-[#0da687]/10 px-3.5 py-1.5 rounded-full">
+            Finsocap Networks
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 mt-4 tracking-tight">
+            Our 50+ Trusted Financial Partners
+          </h2>
+          <p className="text-sm sm:text-base text-slate-500 mt-2.5 font-normal">
+            We partner with India&apos;s leading banks, insurance providers, and asset management houses to bring you the best rates and policies.
+          </p>
+        </div>
+
+        {/* Dynamic sliding track */}
+        <div className="relative w-full overflow-hidden select-none py-2">
+          <div className="flex gap-6 sm:gap-8 w-max animate-scroll-left hover:pause-scroll items-center">
+            {/* Set 1 */}
+            {partners.map((partner, index) => (
+              <div key={`p1-${index}`} className="flex flex-col items-center gap-2.5 group">
+                {/* SVG Logo Container */}
+                <div className="w-52 h-20 sm:w-60 sm:h-24 flex items-center justify-center p-0 drop-shadow-xs group-hover:scale-105 transition-transform duration-300">
+                  <Image
+                    src={partner.src}
+                    alt={partner.name}
+                    width={240}
+                    height={96}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
 
-                {/* Dynamic sliding track */}
-                <div className="relative w-full overflow-hidden select-none">
-                    {/* We'll duplicate the list to make a seamless loop */}
-                    <div className="flex gap-6 w-max animate-scroll-left hover:pause-scroll">
-                        {/* Set 1 */}
-                        {partners.map((partner, index) => (
-                            <div
-                                key={`p1-${index}`}
-                                className="w-56 h-24 bg-white border border-slate-100 rounded-2xl flex flex-col items-center justify-center p-4 shadow-sm hover:shadow-md hover:border-brand-teal transition-all duration-300 group"
-                            >
-                                <span className="font-extrabold text-slate-800 text-lg group-hover:text-brand-blue transition-colors">
-                                    {partner.name}
-                                </span>
-                                <span className="text-[10px] text-slate-400 mt-1 font-semibold uppercase tracking-wider">
-                                    {partner.category}
-                                </span>
-                            </div>
-                        ))}
-                        {/* Set 2 */}
-                        {partners.map((partner, index) => (
-                            <div
-                                key={`p2-${index}`}
-                                className="w-56 h-24 bg-white border border-slate-100 rounded-2xl flex flex-col items-center justify-center p-4 shadow-sm hover:shadow-md hover:border-brand-teal transition-all duration-300 group"
-                            >
-                                <span className="font-extrabold text-slate-800 text-lg group-hover:text-brand-blue transition-colors">
-                                    {partner.name}
-                                </span>
-                                <span className="text-[10px] text-slate-400 mt-1 font-semibold uppercase tracking-wider">
-                                    {partner.category}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
+                {/* Rounded Category Pill Div under SVG */}
+                <div className="bg-white border border-slate-200/80 px-4 py-1 rounded-full text-xs font-bold text-slate-700 shadow-xs flex items-center justify-center gap-1.5 group-hover:bg-[#0da687] group-hover:text-white group-hover:border-[#0da687] transition-all">
+                  <span>{partner.category}</span>
                 </div>
-            </div>
+              </div>
+            ))}
 
-            <style jsx global>{`
+            {/* Set 2 (Seamless Infinite Loop) */}
+            {partners.map((partner, index) => (
+              <div key={`p2-${index}`} className="flex flex-col items-center gap-2.5 group">
+                {/* SVG Logo Container */}
+                <div className="w-52 h-20 sm:w-60 sm:h-24 flex items-center justify-center p-0 drop-shadow-xs group-hover:scale-105 transition-transform duration-300">
+                  <Image
+                    src={partner.src}
+                    alt={partner.name}
+                    width={240}
+                    height={96}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+
+                {/* Rounded Category Pill Div under SVG */}
+                <div className="bg-white border border-slate-200/80 px-4 py-1 rounded-full text-xs font-bold text-slate-700 shadow-xs flex items-center justify-center gap-1.5 group-hover:bg-[#0da687] group-hover:text-white group-hover:border-[#0da687] transition-all">
+                  <span>{partner.category}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <style jsx global>{`
         @keyframes scroll-left {
           0% {
             transform: translateX(0);
@@ -77,12 +90,12 @@ export default function OurPartners() {
           }
         }
         .animate-scroll-left {
-          animation: scroll-left 30s linear infinite;
+          animation: scroll-left 28s linear infinite;
         }
         .hover\:pause-scroll:hover {
           animation-play-state: paused;
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 }

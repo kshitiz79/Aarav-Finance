@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Global/Header";
 import Footer from "../components/Global/Footer";
+import AdvisorCallback from "../components/Home/AdvisorCallback";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Finsocap - Loans, Insurance, Mutual Funds & Tax Filing under One Roof",
   description: "Finsocap provides finance and insurance services, offering complete financial solutions under one roof. Compare loans, mutual funds, insurance, and get CA-assisted ITR filing support.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -32,6 +36,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100">
         <Header />
         <main className="flex-1 flex flex-col">{children}</main>
+        <AdvisorCallback />
         <Footer />
       </body>
     </html>

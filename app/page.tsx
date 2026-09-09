@@ -6,7 +6,6 @@ import OurPartners from "../components/Home/OurPartners";
 import Calculators from "../components/Home/Calculators";
 import WhyChooseUs from "../components/Home/WhyChooseUs";
 import Testemonials from "../components/Home/Testemonials";
-import AdvisorCallback from "../components/Home/AdvisorCallback";
 
 export default function Home() {
   const handleCallbackRegistration = (name: string, phone: string) => {
@@ -21,7 +20,6 @@ export default function Home() {
       <Calculators />
       <WhyChooseUs />
       <Testemonials />
-      <AdvisorCallback />
     </div>
   );
 }
