@@ -265,7 +265,7 @@ export default function Hero({ onRequestCallback }) {
             {/* Background Image for Mobile/Tablet within the dedicated Hero container */}
             <div className="block lg:hidden absolute inset-0 z-0 pointer-events-none">
               <img
-                src="/Hero_finsocap.png"
+                src="./Hero_finsocap.png"
                 alt="Finsocap Hero Background"
                 className="w-full h-full object-cover object-right sm:object-[90%_center]"
               />
