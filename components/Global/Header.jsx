@@ -153,7 +153,7 @@ export default function Header() {
             {/* Consultation CTA */}
             <Link
               href="tel:+918095132132"
-              className="flex items-center gap-1.5 sm:gap-2 bg-[#3652a0] hover:bg-[#2b417d] text-white px-3 sm:px-4.5 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-md shadow-indigo-900/10 hover:shadow-lg"
+              className="flex items-center gap-1.5 sm:gap-2 bg-[#3652a0] hover:bg-[#2b417d] text-white px-3 sm:px-4.5 py-2.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-md shadow-indigo-900/10 hover:shadow-lg"
             >
               <PhoneCallIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span>Talk to Expert</span>

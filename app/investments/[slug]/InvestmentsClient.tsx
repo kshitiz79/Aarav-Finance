@@ -207,48 +207,140 @@ export default function InvestmentsClient({ slug }: { slug: string }) {
   };
 
   return (
-    <div className="bg-white text-slate-800 font-sans min-h-screen py-10">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <div className="bg-slate-50/50 text-slate-800 font-sans min-h-screen pb-16">
+      <div className="container mx-auto px-4 max-w-7xl pt-6">
         {/* Breadcrumb */}
-        <div className="text-xs text-slate-400 mb-6 flex gap-2 font-semibold">
-          <Link href="/" className="hover:text-brand-blue">Home</Link>
+        <div className="text-xs text-slate-400 mb-6 flex items-center gap-2 font-semibold">
+          <Link href="/" className="hover:text-brand-blue transition-colors">Home</Link>
           <span>/</span>
           <span className="text-slate-600">Investments</span>
           <span>/</span>
-          <span className="text-brand-blue font-bold capitalize">{slug}</span>
+          <span className="text-[#0da687] font-bold capitalize">{slug}</span>
         </div>
 
-        {/* Hero split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
-          <div className="lg:col-span-7">
-            <span className="text-brand-teal text-xs font-extrabold uppercase tracking-widest bg-brand-teal/10 px-3 py-1 rounded-full">
-              Investments & Wealth
-            </span>
-            <h1 className="text-3xl sm:text-5xl font-black text-slate-850 mt-4 leading-tight">
-              {data.title}
-            </h1>
-            <p className="text-slate-500 text-sm sm:text-base mt-4 max-w-xl leading-relaxed">
-              {data.desc}
-            </p>
-            <p className="text-brand-blue text-xs sm:text-sm mt-2 font-bold leading-relaxed">
-              ★ {data.tagline}
-            </p>
+        {/* Hero Section matching reference screenshot 2 */}
+        <div className="bg-white border border-slate-100 rounded-3xl p-6 sm:p-10 shadow-sm mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* LEFT COLUMN */}
+            <div className="lg:col-span-7 flex flex-col items-start">
+              {/* Category Pill with accent line */}
+              <div className="inline-flex items-center gap-2.5 mb-3">
+                <span className="text-xs font-black uppercase tracking-widest text-[#0da687]">
+                  INVESTMENTS & WEALTH
+                </span>
+                <span className="w-8 h-[2px] bg-[#0da687] rounded-full inline-block" />
+              </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-              {data.features.map((feat, idx) => (
-                <div key={idx} className="flex gap-2.5 items-start bg-slate-50 border border-slate-100 p-4 rounded-xl shadow-sm">
-                  <span className="text-brand-teal font-bold">✓</span>
-                  <span className="text-xs font-semibold text-slate-600 leading-snug">{feat}</span>
-                </div>
-              ))}
+              {/* Dual-color headline */}
+              <h1 className="text-3xl sm:text-5xl lg:text-[48px] font-black text-slate-900 leading-[1.15] tracking-tight">
+                {data.title.includes("Funds") ? (
+                  <>
+                    {data.title.replace("Funds", "")}
+                    <span className="text-[#0da687]">Funds</span>
+                  </>
+                ) : data.title.includes("Plans") ? (
+                  <>
+                    {data.title.replace("Plans", "")}
+                    <span className="text-[#0da687]">Plans</span>
+                  </>
+                ) : (
+                  <>
+                    {data.title}
+                  </>
+                )}
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-sm sm:text-base text-slate-600 mt-4 leading-relaxed max-w-2xl font-normal">
+                {data.desc}
+              </p>
+
+              {/* Highlight / Trust Badge Pill */}
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#f0fdfa] border border-[#0da687]/20 text-[#0da687] text-xs sm:text-sm font-bold mt-4 shadow-xs">
+                <svg className="w-4 h-4 text-[#0da687]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+                <span>★ {data.tagline}</span>
+              </div>
+
+              {/* 4 Feature Icon Pills Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-7 w-full max-w-2xl">
+                {data.features.map((feat, idx) => {
+                  const icons = [
+                    <svg key="1" className="w-5 h-5 text-[#0da687]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>,
+                    <svg key="2" className="w-5 h-5 text-[#0da687]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>,
+                    <svg key="3" className="w-5 h-5 text-[#0da687]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
+                    <svg key="4" className="w-5 h-5 text-[#0da687]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  ];
+
+                  return (
+                    <div key={idx} className="bg-[#f8fafc] border border-slate-100 hover:border-[#0da687]/30 p-3.5 sm:p-4 rounded-2xl shadow-xs transition-all flex items-center gap-3.5 group">
+                      <span className="w-10 h-10 rounded-xl bg-[#e6f7f3] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                        {icons[idx % icons.length]}
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold text-slate-800 leading-snug">
+                        {feat}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
 
-          {/* Calculator card */}
-          <div className="lg:col-span-5 bg-slate-50 border border-slate-150 p-6 sm:p-8 rounded-3xl shadow-md">
-            <h3 className="font-extrabold text-slate-850 text-base mb-6">
-              Project Investment Yield
-            </h3>
+            {/* RIGHT COLUMN: Hero Graphic Banner Image matching Screenshot 2 */}
+            <div className="lg:col-span-5 relative w-full h-[320px] sm:h-[400px] lg:h-[440px] rounded-3xl overflow-hidden shadow-md border border-slate-100 flex items-center justify-center bg-gradient-to-br from-[#e6f7f3]/40 via-white to-slate-50">
+              <img
+                src="/inverstments.png"
+                alt="Finsocap Investment Banner"
+                className="w-full h-full object-cover object-center"
+              />
+
+              {/* Floating Tagline Script on Top Right */}
+              <div className="absolute top-4 right-5 z-20 pointer-events-none">
+                <span className="font-serif italic text-base sm:text-xl font-black text-[#3652a0] drop-shadow-sm tracking-wide block transform rotate-[-2deg]">
+                  Multiply Your Wealth
+                </span>
+              </div>
+
+              {/* Floating Feature Card on Left Side */}
+              <div className="absolute bottom-5 left-5 z-20 bg-white/95 backdrop-blur-md px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 max-w-[240px] sm:max-w-[260px]">
+                <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0da687] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <line x1="18" y1="20" x2="18" y2="10"/>
+                    <line x1="12" y1="20" x2="12" y2="4"/>
+                    <line x1="6" y1="20" x2="6" y2="14"/>
+                  </svg>
+                </span>
+                <div className="min-w-0">
+                  <span className="block font-black text-slate-900 text-xs sm:text-sm leading-tight truncate">
+                    Direct SIP Wealth Growth
+                  </span>
+                  <span className="block text-[10px] sm:text-[11px] font-bold text-[#0da687] mt-0.5 flex items-center gap-1">
+                    1.5% Extra Returns &rarr;
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Interactive Yield Calculator Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+          <div className="lg:col-span-12 bg-white border border-slate-150 p-6 sm:p-10 rounded-3xl shadow-sm">
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-8">
+                <span className="text-xs font-black uppercase tracking-widest text-[#0da687] bg-[#e6f7f3] px-3.5 py-1 rounded-full">
+                  WEALTH CALCULATOR
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mt-2">
+                  Project Investment Yield
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                  Adjust your monthly SIP amount, return rate, and time horizon to see projected compounding growth.
+                </p>
+              </div>
 
             {showApplyQuotes ? (
               <div className="flex flex-col gap-4">
@@ -392,6 +484,7 @@ export default function InvestmentsClient({ slug }: { slug: string }) {
             )}
           </div>
         </div>
+      </div>
 
         {/* FAQs */}
         <div className="border-t border-slate-100 pt-16 mb-16">

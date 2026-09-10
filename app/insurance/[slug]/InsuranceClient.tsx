@@ -179,74 +179,155 @@ export default function InsuranceClient({ slug }: { slug: string }) {
   ];
 
   return (
-    <div className="bg-white text-slate-800 font-sans min-h-screen py-10">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <div className="bg-slate-50/50 text-slate-800 font-sans min-h-screen pb-16">
+      <div className="container mx-auto px-4 max-w-7xl pt-6">
         {/* Breadcrumb */}
-        <div className="text-xs text-slate-400 mb-6 flex gap-2 font-semibold">
-          <Link href="/" className="hover:text-brand-blue">Home</Link>
+        <div className="text-xs text-slate-400 mb-6 flex items-center gap-2 font-semibold">
+          <Link href="/" className="hover:text-brand-blue transition-colors">Home</Link>
           <span>/</span>
           <span className="text-slate-600">Insurance</span>
           <span>/</span>
-          <span className="text-brand-blue font-bold capitalize">{slug}</span>
+          <span className="text-[#0da687] font-bold capitalize">{slug}</span>
         </div>
 
-        {/* Hero split section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
-          <div className="lg:col-span-7">
-            <span className="text-brand-teal text-xs font-extrabold uppercase tracking-widest bg-brand-teal/10 px-3 py-1 rounded-full">
-              Insurance Solutions
-            </span>
-            <h1 className="text-3xl sm:text-5xl font-black text-slate-850 mt-4 leading-tight">
-              {data.title}
-            </h1>
-            <p className="text-slate-500 text-sm sm:text-base mt-4 max-w-xl leading-relaxed">
-              {data.desc}
-            </p>
-            <p className="text-brand-blue text-xs sm:text-sm mt-2 font-bold leading-relaxed">
-              ★ {data.tagline}
-            </p>
+        {/* Hero Section matching reference screenshot 2 */}
+        <div className="bg-white border border-slate-100 rounded-3xl p-6 sm:p-10 shadow-sm mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* LEFT COLUMN */}
+            <div className="lg:col-span-7 flex flex-col items-start">
+              {/* Category Pill with accent line */}
+              <div className="inline-flex items-center gap-2.5 mb-3">
+                <span className="text-xs font-black uppercase tracking-widest text-[#0da687]">
+                  INSURANCE SOLUTIONS
+                </span>
+                <span className="w-8 h-[2px] bg-[#0da687] rounded-full inline-block" />
+              </div>
 
-            {/* Feature cards list */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-              {data.features.map((feat, idx) => (
-                <div key={idx} className="flex gap-2.5 items-start bg-slate-50 border border-slate-100 p-4 rounded-xl shadow-sm">
-                  <span className="text-brand-teal font-bold">✓</span>
-                  <span className="text-xs font-semibold text-slate-600 leading-snug">{feat}</span>
-                </div>
-              ))}
+              {/* Dual-color headline */}
+              <h1 className="text-3xl sm:text-5xl lg:text-[48px] font-black text-slate-900 leading-[1.15] tracking-tight">
+                {data.title.includes("Plans") ? (
+                  <>
+                    {data.title.replace("Plans", "")}
+                    <span className="text-[#0da687]">Plans</span>
+                  </>
+                ) : data.title.includes("Policies") ? (
+                  <>
+                    {data.title.replace("Policies", "")}
+                    <span className="text-[#0da687]">Policies</span>
+                  </>
+                ) : (
+                  <>
+                    {data.title}
+                  </>
+                )}
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-sm sm:text-base text-slate-600 mt-4 leading-relaxed max-w-2xl font-normal">
+                {data.desc}
+              </p>
+
+              {/* Highlight / Trust Badge Pill */}
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#f0fdfa] border border-[#0da687]/20 text-[#0da687] text-xs sm:text-sm font-bold mt-4 shadow-xs">
+                <svg className="w-4 h-4 text-[#0da687]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polyline points="9 12 11 14 15 10" />
+                </svg>
+                <span>★ {data.tagline}</span>
+              </div>
+
+              {/* 4 Feature Icon Pills Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-7 w-full max-w-2xl">
+                {data.features.map((feat, idx) => {
+                  // Icon picker based on index
+                  const icons = [
+                    <svg key="1" className="w-5 h-5 text-[#0da687]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4" /></svg>,
+                    <svg key="2" className="w-5 h-5 text-[#0da687]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>,
+                    <svg key="3" className="w-5 h-5 text-[#0da687]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>,
+                    <svg key="4" className="w-5 h-5 text-[#0da687]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  ];
+
+                  return (
+                    <div key={idx} className="bg-[#f8fafc] border border-slate-100 hover:border-[#0da687]/30 p-3.5 sm:p-4 rounded-2xl shadow-xs transition-all flex items-center gap-3.5 group">
+                      <span className="w-10 h-10 rounded-xl bg-[#e6f7f3] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                        {icons[idx % icons.length]}
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold text-slate-800 leading-snug">
+                        {feat}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
 
-          {/* Side Info Card */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-sky-50 to-indigo-50/30 border border-sky-100/70 p-6 sm:p-8 rounded-3xl shadow-sm">
-            <h3 className="font-extrabold text-slate-850 text-lg mb-4 flex items-center gap-2">
-              <svg className="w-5 h-5 text-sky-600 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            {/* RIGHT COLUMN: Hero Banner Graphic Image matching Screenshot 2 */}
+            <div className="lg:col-span-5 relative w-full h-[320px] sm:h-[400px] lg:h-[440px] rounded-3xl overflow-hidden shadow-md border border-slate-100 flex items-center justify-center bg-gradient-to-br from-[#e6f7f3]/40 via-white to-slate-50">
+              <img
+                src="/Insurance.png"
+                alt="Finsocap Health Insurance Banner"
+                className="w-full h-full object-cover object-center"
+              />
+
+              {/* Floating Tagline Script on Top Right */}
+              <div className="absolute top-4 right-5 z-20 pointer-events-none">
+                <span className="font-serif italic text-base sm:text-xl font-black text-[#3652a0] drop-shadow-sm tracking-wide block transform rotate-[-2deg]">
+                  Your Health Our Priority
+                </span>
+              </div>
+
+              {/* Floating Shield Feature Card on Left Side */}
+              <div className="absolute bottom-5 left-5 z-20 bg-white/95 backdrop-blur-md px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 max-w-[240px] sm:max-w-[260px]">
+                <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0da687] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </span>
+                <div className="min-w-0">
+                  <span className="block font-black text-slate-900 text-xs sm:text-sm leading-tight truncate">
+                    Complete Health Coverage
+                  </span>
+                  <span className="block text-[10px] sm:text-[11px] font-bold text-[#0da687] mt-0.5 flex items-center gap-1">
+                    For a Healthier Tomorrow &rarr;
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Advantage & Advisory Card Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+          <div className="lg:col-span-12 bg-gradient-to-br from-[#eff5fe]/80 to-white border border-slate-100 p-6 sm:p-10 rounded-3xl shadow-xs">
+            <h3 className="font-black text-slate-900 text-xl mb-4 flex items-center gap-2">
+              <svg className="w-6 h-6 text-[#3652a0]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
               Finsocap Insurance Advantage
             </h3>
             
-            <p className="text-slate-650 text-xs sm:text-sm leading-relaxed mb-4">
+            <p className="text-slate-600 text-sm leading-relaxed mb-4">
               Our team of experienced insurance professionals helps individuals and businesses choose the most suitable insurance plans based on their needs and financial goals.
             </p>
             
-            <div className="border-t border-sky-100/50 my-4" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                Whether it is <strong>Health Insurance</strong>, <strong>Term Life Insurance</strong>, <strong>Motor (Car/Bike) Insurance</strong>, <strong>Travel Insurance</strong>, or <strong>Business Insurance</strong>, we provide expert guidance to help you select the right coverage at competitive prices.
+              </p>
+              
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                We also assist customers with policy servicing, renewals, and claim-related support to ensure a smooth and hassle-free experience.
+              </p>
+            </div>
             
-            <p className="text-slate-600 text-xs leading-relaxed mb-4">
-              Whether it is <strong>Health Insurance</strong>, <strong>Term Life Insurance</strong>, <strong>Motor (Car/Bike) Insurance</strong>, <strong>Travel Insurance</strong>, or <strong>Business Insurance</strong>, we provide expert guidance to help you select the right coverage at competitive prices.
-            </p>
-            
-            <p className="text-slate-600 text-xs leading-relaxed mb-4">
-              We also assist customers with policy servicing, renewals, and claim-related support to ensure a smooth and hassle-free experience.
-            </p>
-            
-            <div className="bg-white/80 border border-sky-100 p-4 rounded-2xl mt-6 shadow-sm">
-              <p className="text-slate-700 text-xs font-bold leading-relaxed text-center italic">
+            <div className="bg-white border border-slate-200/80 p-4 rounded-2xl mt-4 shadow-xs">
+              <p className="text-slate-700 text-xs sm:text-sm font-bold leading-relaxed text-center italic">
                 &ldquo;Choose the right protection with expert advice and reliable claim assistance at every step of your insurance journey&rdquo;
               </p>
             </div>
           </div>
-
         </div>
 
         {/* FAQs Section */}

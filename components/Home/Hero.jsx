@@ -114,7 +114,7 @@ export default function Hero({ onRequestCallback }) {
   };
 
   return (
-    <section className="relative overflow-hidden pt-6 pb-10 sm:py-10 lg:py-12 font-sans border-b border-slate-100 min-h-[650px] flex flex-col justify-between">
+    <section className="relative overflow-hidden pt-12 pb-10 sm:py-10 lg:py-12 font-sans border-b border-slate-100 min-h-[650px] flex flex-col justify-between">
 
       {/* Full-width Cover Background Image ONLY FOR DESKTOP/LAPTOP (lg+) */}
       <div className="hidden lg:block absolute top-0 left-0 right-0 h-[650px] z-0 pointer-events-none overflow-hidden">
