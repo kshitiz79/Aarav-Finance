@@ -258,7 +258,6 @@ export default function Hero({ onRequestCallback }) {
             </div>
 
           </div>
-
           {/* RIGHT COLUMN ON DESKTOP & DEDICATED HERO SECTION ON MOBILE/TABLET (ALWAYS VISIBLE) */}
           <div className="w-full lg:col-span-6 relative min-h-[380px] sm:min-h-[440px] lg:h-[500px] xl:h-[540px] justify-center items-center rounded-3xl overflow-hidden lg:overflow-visible shadow-md lg:shadow-none my-4 lg:my-0 z-10 border border-slate-100/80 lg:border-none">
             {/* Background Image for Mobile/Tablet within the dedicated Hero container */}
